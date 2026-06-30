@@ -9,40 +9,64 @@ Flowdex Academy is a production markets-education platform: a typed course syste
 ## Architecture
 
 ```mermaid
-flowchart TD
-    Browser["Browser — Next.js / React"] --> App["App Router<br/>43 API routes · server actions"]
+flowchart TB
+    Browser["Browser — Next.js / React"] --> App["App Router · 43 API routes · server actions"]
 
-    App --> Courses["Courses & exams"]
-    App --> Pay["Payments"]
-    App --> Tutor["AI tutor"]
-    App --> Data["Data & auth"]
-    App --> Comms["Community & email"]
-    App --> Ops["Platform ops"]
+    App --> Courses
+    App --> Pay
+    App --> Tutor
+    App --> Data
+    App --> Comms
+    App --> Ops
 
-    Courses --> C1["Typed course content<br/>modules · sections · blocks"]
-    Courses --> C2["Zero-trust exam engine<br/>idempotent attempts · cooldown"]
-    Courses --> C3["Progress tracking<br/>+ membership gating"]
+    subgraph Courses["Courses &amp; exams"]
+      direction LR
+      C1["Typed course content<br/>modules · sections · blocks"]
+      C2["Zero-trust exam engine<br/>idempotent attempts · cooldown"]
+      C3["Progress tracking<br/>+ membership gating"]
+      C1 ~~~ C2 ~~~ C3
+    end
 
-    Pay --> P1["MercadoPago · PayPal · NOWPayments"]
-    Pay --> P2["Idempotent webhooks<br/>tolerant fulfillment"]
-    Pay --> P3["Coupons & affiliate tracking"]
-    Pay --> P4["Dual-currency pricing (ARS / USD)"]
+    subgraph Pay["Payments"]
+      direction LR
+      P1["MercadoPago · PayPal<br/>NOWPayments"]
+      P2["Idempotent webhooks<br/>tolerant fulfillment"]
+      P3["Coupons &amp;<br/>affiliate tracking"]
+      P4["Dual-currency<br/>pricing (ARS / USD)"]
+      P1 ~~~ P2 ~~~ P3 ~~~ P4
+    end
 
-    Tutor --> T1["Gemini + context caching"]
-    Tutor --> T2["Prompt-injection filter"]
-    Tutor --> T3["Usage logging & quotas"]
+    subgraph Tutor["AI tutor"]
+      direction LR
+      T1["Gemini +<br/>context caching"]
+      T2["Prompt-injection<br/>filter"]
+      T3["Usage logging<br/>&amp; quotas"]
+      T1 ~~~ T2 ~~~ T3
+    end
 
-    Data --> D1["Supabase Auth + Turnstile captcha"]
-    Data --> D2["Postgres + Row-Level Security<br/>multi-tenant isolation"]
-    Data --> D3["34 versioned SQL migrations"]
+    subgraph Data["Data &amp; auth"]
+      direction LR
+      D1["Supabase Auth<br/>+ Turnstile captcha"]
+      D2["Postgres + RLS<br/>multi-tenant isolation"]
+      D3["34 versioned<br/>SQL migrations"]
+      D1 ~~~ D2 ~~~ D3
+    end
 
-    Comms --> M1["Discord bot — role grant / revoke"]
-    Comms --> M2["Telegram bot — admin notifications"]
-    Comms --> M3["Resend — transactional email"]
+    subgraph Comms["Community &amp; email"]
+      direction LR
+      M1["Discord bot<br/>role grant / revoke"]
+      M2["Telegram bot<br/>admin notifications"]
+      M3["Resend<br/>transactional email"]
+      M1 ~~~ M2 ~~~ M3
+    end
 
-    Ops --> O1["Upstash — rate limiting"]
-    Ops --> O2["Sentry + PostHog — observability"]
-    Ops --> O3["Vercel — deploy · 3 cron jobs"]
+    subgraph Ops["Platform ops"]
+      direction LR
+      O1["Upstash<br/>rate limiting"]
+      O2["Sentry + PostHog<br/>observability"]
+      O3["Vercel<br/>deploy · 3 cron jobs"]
+      O1 ~~~ O2 ~~~ O3
+    end
 ```
 
 ## Features
