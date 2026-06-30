@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Cronograma Flowdex · Rotación Máxima · 8 semanas</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#0a0a0a; color:#e6e6e6; margin: 20px; }
+  h1 { font-size: 18pt; margin: 8px 0; color:#7DD4C0; }
+  h2 { font-size: 14pt; margin: 24px 0 8px; color:#5BB8D4; }
+  .rules { background:#1a1a1a; border-left: 3px solid #D4B86A; padding: 10px 14px; margin: 12px 0 20px; font-size: 11pt; }
+  .rules div { margin: 3px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; }
+  th, td { border: 1px solid #333; padding: 8px 10px; text-align: center; font-size: 10pt; }
+  th { background: #1f1f1f; color: #7DD4C0; font-weight: bold; }
+  th.hora { background: #111; color: #888; }
+  td.hora { background: #1a1a1a; font-weight: bold; color: #7DD4C0; }
+  td.kt { background: #1b3a5c; color: #d6e6f7; }
+  td.tl { background: #0e2845; color: #aac4e8; }
+  td.ki { background: #1f4a2d; color: #d6efd4; }
+  td.ei { background: #0f3018; color: #a8d9b0; }
+  td.ic { background: #3a1e5c; color: #e0c4f7; font-weight: bold; }
+  td.libre { background: #2a2a2a; color: #555; font-style: italic; }
+  .legend { display: flex; gap: 14px; margin: 10px 0 24px; flex-wrap: wrap; font-size: 10pt; }
+  .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend-box { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+  .totals { background: #141414; border: 1px solid #333; padding: 12px 16px; margin-top: 18px; font-size: 10pt; }
+  .totals div { margin: 3px 0; }
+  .total-bold { font-weight: bold; color: #D4B86A; font-size: 11pt; margin-top: 10px; }
+  .note { font-style: italic; color: #888; margin: 8px 0; }
+</style>
+</head>
+<body>
+
+<h1>Cronograma Flowdex · Rotación Máxima · 8 semanas</h1>
+<p class="note">Las 4 semanas únicas (S1-S4) se repiten en S5-S8. Cada clase cambia de día Y de franja entre semanas para máxima variedad.</p>
+
+<div class="rules">
+  <div><b>Reglas operativas:</b></div>
+  <div>· Trading (KT, TL) solo en franjas 14-16 y 22-23 (Franco entrena 20-22)</div>
+  <div>· Investment (KI, EI) en franjas 14-16 y 20-22 (Augusto cubre 14-22)</div>
+  <div>· Inner Circle (IC) fijo todas las semanas: IC A vie 20-21, IC B jue 21-22, IC C sáb 14-15</div>
+  <div>· Viernes 21-22 y 22-23 siempre libres · 1 slot libre rotando en 20-21 lun-jue</div>
+</div>
+
+<div class="legend">
+  <span class="legend-item"><span class="legend-box" style="background:#1b3a5c"></span> KT (Kickstart Trading) · Franco</span>
+  <span class="legend-item"><span class="legend-box" style="background:#0e2845"></span> TL (Trading Lab) · Franco</span>
+  <span class="legend-item"><span class="legend-box" style="background:#1f4a2d"></span> KI (Kickstart Investment) · Augusto</span>
+  <span class="legend-item"><span class="legend-box" style="background:#0f3018"></span> EI (Expert Investment) · Augusto</span>
+  <span class="legend-item"><span class="legend-box" style="background:#3a1e5c"></span> IC (Inner Circle) · ambos</span>
+  <span class="legend-item"><span class="legend-box" style="background:#2a2a2a"></span> Libre</span>
+</div>
+
+<h2>SEMANA 1 (= Semana 5)</h2>
+<table>
+<tr><th class="hora">Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th></tr>
+<tr>
+  <td class="hora">14:00 - 15:00</td>
+  <td class="kt">KT C1</td><td class="ki">KI C1</td><td class="kt">KT C3</td><td class="ei">EI C1</td><td class="tl">TL C2</td><td class="ic">IC C</td>
+</tr>
+<tr>
+  <td class="hora">15:00 - 16:00</td>
+  <td class="tl">TL C3</td><td class="kt">KT C2</td><td class="ki">KI C2</td><td class="tl">TL C1</td><td class="ei">EI C2</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">20:00 - 21:00</td>
+  <td class="ei">EI C1</td><td class="ei">EI C2</td><td class="ei">EI C3</td><td class="libre">LIBRE</td><td class="ic">IC A</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">21:00 - 22:00</td>
+  <td class="ki">KI C1</td><td class="ki">KI C2</td><td class="ki">KI C3</td><td class="ic">IC B</td><td class="libre">LIBRE</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">22:00 - 23:00</td>
+  <td class="tl">TL C2</td><td class="tl">TL C1</td><td class="kt">KT C1</td><td class="kt">KT C2</td><td class="libre">LIBRE</td><td class="libre">LIBRE</td>
+</tr>
+</table>
+
+<h2>SEMANA 2 (= Semana 6)</h2>
+<table>
+<tr><th class="hora">Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th></tr>
+<tr>
+  <td class="hora">14:00 - 15:00</td>
+  <td class="ei">EI C2</td><td class="tl">TL C3</td><td class="kt">KT C2</td><td class="ki">KI C2</td><td class="tl">TL C1</td><td class="ic">IC C</td>
+</tr>
+<tr>
+  <td class="hora">15:00 - 16:00</td>
+  <td class="tl">TL C2</td><td class="kt">KT C1</td><td class="ki">KI C1</td><td class="kt">KT C3</td><td class="ei">EI C1</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">20:00 - 21:00</td>
+  <td class="ki">KI C1</td><td class="ki">KI C2</td><td class="libre">LIBRE</td><td class="ki">KI C3</td><td class="ic">IC A</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">21:00 - 22:00</td>
+  <td class="ei">EI C1</td><td class="ei">EI C2</td><td class="ei">EI C3</td><td class="ic">IC B</td><td class="libre">LIBRE</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">22:00 - 23:00</td>
+  <td class="tl">TL C1</td><td class="kt">KT C2</td><td class="tl">TL C2</td><td class="kt">KT C1</td><td class="libre">LIBRE</td><td class="libre">LIBRE</td>
+</tr>
+</table>
+
+<h2>SEMANA 3 (= Semana 7)</h2>
+<table>
+<tr><th class="hora">Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th></tr>
+<tr>
+  <td class="hora">14:00 - 15:00</td>
+  <td class="ei">EI C1</td><td class="tl">TL C2</td><td class="kt">KT C1</td><td class="ki">KI C1</td><td class="kt">KT C3</td><td class="ic">IC C</td>
+</tr>
+<tr>
+  <td class="hora">15:00 - 16:00</td>
+  <td class="tl">TL C1</td><td class="ei">EI C2</td><td class="tl">TL C3</td><td class="kt">KT C2</td><td class="ki">KI C2</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">20:00 - 21:00</td>
+  <td class="ei">EI C2</td><td class="libre">LIBRE</td><td class="ei">EI C1</td><td class="ei">EI C3</td><td class="ic">IC A</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">21:00 - 22:00</td>
+  <td class="ki">KI C2</td><td class="ki">KI C3</td><td class="ki">KI C1</td><td class="ic">IC B</td><td class="libre">LIBRE</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">22:00 - 23:00</td>
+  <td class="kt">KT C2</td><td class="kt">KT C1</td><td class="tl">TL C1</td><td class="tl">TL C2</td><td class="libre">LIBRE</td><td class="libre">LIBRE</td>
+</tr>
+</table>
+
+<h2>SEMANA 4 (= Semana 8)</h2>
+<table>
+<tr><th class="hora">Hora</th><th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th></tr>
+<tr>
+  <td class="hora">14:00 - 15:00</td>
+  <td class="ki">KI C2</td><td class="tl">TL C1</td><td class="ei">EI C2</td><td class="tl">TL C3</td><td class="kt">KT C2</td><td class="ic">IC C</td>
+</tr>
+<tr>
+  <td class="hora">15:00 - 16:00</td>
+  <td class="kt">KT C3</td><td class="ei">EI C1</td><td class="tl">TL C2</td><td class="kt">KT C1</td><td class="ki">KI C1</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">20:00 - 21:00</td>
+  <td class="libre">LIBRE</td><td class="ki">KI C3</td><td class="ki">KI C2</td><td class="ki">KI C1</td><td class="ic">IC A</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">21:00 - 22:00</td>
+  <td class="ei">EI C2</td><td class="ei">EI C3</td><td class="ei">EI C1</td><td class="ic">IC B</td><td class="libre">LIBRE</td><td class="libre">LIBRE</td>
+</tr>
+<tr>
+  <td class="hora">22:00 - 23:00</td>
+  <td class="kt">KT C1</td><td class="tl">TL C2</td><td class="kt">KT C2</td><td class="tl">TL C1</td><td class="libre">LIBRE</td><td class="libre">LIBRE</td>
+</tr>
+</table>
+
+<div class="totals">
+  <div><b>Volumen total en 8 semanas</b></div>
+  <div>· KT C1: 16 sesiones (8 tardes + 8 noches) — rota por lun/mar/mié/jue tanto en tarde como en noche</div>
+  <div>· KT C2: 16 sesiones (8 tardes + 8 noches)</div>
+  <div>· KT C3: 8 sesiones (solo tarde, alternando 14-15 y 15-16)</div>
+  <div>· TL C1: 16 sesiones</div>
+  <div>· TL C2: 16 sesiones</div>
+  <div>· TL C3: 8 sesiones (solo tarde)</div>
+  <div>· KI C1: 16 sesiones</div>
+  <div>· KI C2: 16 sesiones</div>
+  <div>· KI C3: 8 sesiones (solo noche temprana, alternando 20-21 y 21-22)</div>
+  <div>· EI C1: 16 sesiones</div>
+  <div>· EI C2: 16 sesiones</div>
+  <div>· EI C3: 8 sesiones (solo noche temprana)</div>
+  <div>· Inner Circle: 24 sesiones grupales (3 por semana × 8)</div>
+  <div class="total-bold">Total: 184 sesiones en 8 semanas · 23 por semana</div>
+</div>
+
+</body>
+</html>
