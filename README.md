@@ -22,64 +22,15 @@ A single Next.js application serves the public site, the authenticated student a
 ## Architecture
 
 ```mermaid
-flowchart TB
-    Browser["Browser — Next.js / React"] --> App["App Router · 43 API routes · server actions"]
+flowchart LR
+    Browser["Browser<br/>Next.js / React"] --> App["App Router<br/>43 API routes<br/>server actions"]
 
-    App --> Courses
-    App --> Pay
-    App --> Tutor
-    App --> Data
-    App --> Comms
-    App --> Ops
-
-    subgraph Courses["Courses & exams"]
-      direction LR
-      C1["Typed course content<br/>modules · sections · blocks"]
-      C2["Zero-trust exam engine<br/>idempotent attempts · cooldown"]
-      C3["Progress tracking<br/>+ membership gating"]
-      C1 ~~~ C2 ~~~ C3
-    end
-
-    subgraph Pay["Payments"]
-      direction LR
-      P1["MercadoPago · PayPal<br/>NOWPayments"]
-      P2["Idempotent webhooks<br/>tolerant fulfillment"]
-      P3["Coupons &amp;<br/>affiliate tracking"]
-      P4["Dual-currency<br/>pricing (ARS / USD)"]
-      P1 ~~~ P2 ~~~ P3 ~~~ P4
-    end
-
-    subgraph Tutor["AI tutor"]
-      direction LR
-      T1["Gemini +<br/>context caching"]
-      T2["Prompt-injection<br/>filter"]
-      T3["Usage logging<br/>&amp; quotas"]
-      T1 ~~~ T2 ~~~ T3
-    end
-
-    subgraph Data["Data &amp; auth"]
-      direction LR
-      D1["Supabase Auth<br/>+ Turnstile captcha"]
-      D2["Postgres + RLS<br/>multi-tenant isolation"]
-      D3["34 versioned<br/>SQL migrations"]
-      D1 ~~~ D2 ~~~ D3
-    end
-
-    subgraph Comms["Community &amp; email"]
-      direction LR
-      M1["Discord bot<br/>role grant / revoke"]
-      M2["Telegram bot<br/>admin notifications"]
-      M3["Resend<br/>transactional email"]
-      M1 ~~~ M2 ~~~ M3
-    end
-
-    subgraph Ops["Platform ops"]
-      direction LR
-      O1["Upstash<br/>rate limiting"]
-      O2["Sentry + PostHog<br/>observability"]
-      O3["Vercel<br/>deploy · 3 cron jobs"]
-      O1 ~~~ O2 ~~~ O3
-    end
+    App --> Courses["<b>Courses and exams</b><br/>typed course content<br/>zero-trust exam engine<br/>progress and membership gating"]
+    App --> Pay["<b>Payments</b><br/>MercadoPago · PayPal · NOWPayments<br/>idempotent webhooks<br/>coupons · dual-currency"]
+    App --> Tutor["<b>AI tutor</b><br/>Gemini + context caching<br/>prompt-injection filter<br/>usage quotas"]
+    App --> Data["<b>Data and auth</b><br/>Supabase Auth + Turnstile<br/>Postgres + RLS<br/>34 SQL migrations"]
+    App --> Comms["<b>Community and email</b><br/>Discord and Telegram bots<br/>Resend transactional email"]
+    App --> Ops["<b>Platform ops</b><br/>Upstash rate limiting<br/>Sentry + PostHog<br/>Vercel · 3 cron jobs"]
 ```
 
 ## Highlights
