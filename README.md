@@ -17,7 +17,7 @@ Flowdex Academy is a **production markets-education platform** — a typed cours
 
 ## How it works
 
-A single Next.js application serves the public site, the authenticated student area and the backend in one deploy. Server actions and 43 API routes handle the work: checkout and payment webhooks, exam attempts, the tutor, membership grants, and the cron jobs that keep email and access in sync. Supabase provides auth and a Postgres database with Row-Level Security, so each student only ever sees their own data.
+A single Next.js application serves the public site, the authenticated student area and the backend in one deploy. Server actions and 43 API routes handle the work: checkout and payment webhooks, exam attempts, the tutor, membership grants, and the cron jobs that keep email and access in sync. Everything reads and writes through Supabase — a Postgres database with Row-Level Security, so each student only ever sees their own data — and the whole platform runs serverless on Vercel.
 
 ## Architecture
 
@@ -28,10 +28,22 @@ flowchart LR
     App --> Courses["<b>Courses and exams</b><br/>typed course content<br/>zero-trust exam engine<br/>progress and membership gating"]
     App --> Pay["<b>Payments</b><br/>MercadoPago · PayPal · NOWPayments<br/>idempotent webhooks<br/>coupons · dual-currency"]
     App --> Tutor["<b>AI tutor</b><br/>Gemini + context caching<br/>prompt-injection filter<br/>usage quotas"]
-    App --> Data["<b>Data and auth</b><br/>Supabase Auth + Turnstile<br/>Postgres + RLS<br/>34 SQL migrations"]
+    App --> Data["<b>Data and auth</b><br/>Supabase Auth + Turnstile<br/>session handling"]
     App --> Comms["<b>Community and email</b><br/>Discord and Telegram bots<br/>Resend transactional email"]
-    App --> Ops["<b>Platform ops</b><br/>Upstash rate limiting<br/>Sentry + PostHog<br/>Vercel · 3 cron jobs"]
+    App --> Ops["<b>Platform ops</b><br/>rate limiting<br/>observability<br/>scheduled jobs"]
+
+    Courses --> SB
+    Pay --> SB
+    Tutor --> SB
+    Data --> SB
+    Comms --> SB
+    Ops --> Infra
+
+    SB["<b>Supabase</b><br/>Postgres + RLS · 34 migrations<br/>users · orders · attempts<br/>progress · memberships"]
+    Infra["<b>Runtime and observability</b><br/>Vercel — serverless deploy · 3 cron jobs<br/>Upstash rate limiting<br/>Sentry + PostHog"]
 ```
+
+The flow reads left to right: the browser hits the App Router, which fans out into six subsystems; the five that hold state converge on Supabase as the single source of truth, while platform operations run on the Vercel + observability layer.
 
 ## Highlights
 
